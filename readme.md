@@ -13,6 +13,7 @@ with the official implementation that i try to solve with this
 - allow overriding binary used
 - fix recording of wake words setting, this is derived from phonemes and 
   badly implemented in core, so you end up getting 0.2 second recordings etc
+- i prefer hardcoded static and explicit urls for binary to be downloaded
 
 The "plugins" are pip install-able modules that provide new engines for mycroft
 
