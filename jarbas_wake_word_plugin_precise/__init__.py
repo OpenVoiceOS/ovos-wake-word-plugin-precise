@@ -40,10 +40,6 @@ class PreciseHotwordPlugin(HotWordEngine):
         if not precise_exe:
             precise_exe = self.get_binary(version)
 
-        if not model and version == 0.2:
-            if key_phrase == "hey mycroft":
-                model = join(dirname(__file__), "models", "hey-mycroft-02.pb")
-
         if not model or not isfile(expanduser(model)):
             raise ValueError("Model not found")
 
