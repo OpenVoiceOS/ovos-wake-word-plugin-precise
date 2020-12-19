@@ -62,8 +62,7 @@ Advanced configuration
 - `binary_path` if you want to use your own binary, eg for use with 
   [tflite branch](https://github.com/MycroftAI/mycroft-precise/pull/141)
 - `version` defaults to 0.2, only 0.2 and 0.3 supported (ignored if binary path is set)
-- `model` full path to your model file, if version is 0.2 and wakeword 
-name is "hey mycroft" the default model will be used and this is optional
+- `model` full path to your model file
 - `trigger_level` Higher = more delay & less sensitive
 - `sensitivity`  Higher = more sensitive
 - `expected_duration` defaults to 3 seconds (max value), this is the time 
