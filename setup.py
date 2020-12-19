@@ -4,7 +4,7 @@ from setuptools import setup
 
 PLUGIN_ENTRY_POINT = 'jarbas_precise_ww_plug=jarbas_wake_word_plugin_precise:PreciseHotwordPlugin'
 setup(
-    name='chatterbox-wake-word-plugin-precise',
+    name='jarbas-wake-word-plugin-precise',
     version='0.1',
     description='A wake word plugin for mycroft',
     url='https://github.com/JarbasLingua/jarbas-wake-word-plugin-precise',

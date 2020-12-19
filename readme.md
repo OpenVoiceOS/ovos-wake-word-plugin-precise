@@ -22,7 +22,7 @@ more info in the [docs](https://mycroft-ai.gitbook.io/docs/mycroft-technologies/
 
 ## Install
 
-`mycroft-pip install chatterbox-wake-word-plugin-precise`
+`mycroft-pip install jarbas-wake-word-plugin-precise`
 
 Configure your wake word in mycroft.conf
 
