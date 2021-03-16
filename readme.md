@@ -33,7 +33,7 @@ Configure your wake word in mycroft.conf
  "hotwords": {
     "android": {
         "module": "jarbas_precise_ww_plug",
-        "version": 0.3,
+        "version": "0.3",
         "model": "path/to/your/model"
     }
   }
@@ -51,7 +51,7 @@ Advanced configuration
         "module": "jarbas_precise_ww_plug",
         "trigger_level": 3,
         "sensitivity": 0.5,
-        "version": 0.3,
+        "version": "0.3",
         "model": "path/to/your/model",
         "binary_path": "path/to/your/binary/eg/using/tflite",
         "expected_duration": 3

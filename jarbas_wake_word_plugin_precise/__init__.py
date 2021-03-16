@@ -11,7 +11,7 @@
 # limitations under the License.
 #
 import distutils.spawn
-from mycroft.client.speech.hotword_factory import HotWordEngine
+from ovos_utils.plugins.hotwords import HotWordEngine
 from os.path import join, isfile, expanduser, isdir
 from petact import install_package
 import platform
@@ -34,7 +34,7 @@ class PreciseHotwordPlugin(HotWordEngine):
 
         trigger_level = self.config.get('trigger_level', 3)
         sensitivity = self.config.get('sensitivity', 0.5)
-        version = self.config.get("version", 0.2)
+        version = str(self.config.get("version", "0.2"))
 
         dist_exe = distutils.spawn.find_executable("precise-engine")
         precise_exe = self.config.get("binary_path", dist_exe)
@@ -56,13 +56,13 @@ class PreciseHotwordPlugin(HotWordEngine):
         self.runner.start()
 
     @staticmethod
-    def get_binary(version=0.2):
+    def get_binary(version="0.2"):
         xdg_folder = BaseDirectory.xdg_data_home
         base_url = "https://github.com/MycroftAI/mycroft-precise/releases/download/"
-        if version == 0.2:
+        if version == "0.2":
             base_url += "v0.2.0/precise-engine_0.2.0_{arch}.tar.gz"
             folder = join(xdg_folder, 'precise02')
-        elif version == 0.3:
+        elif version == "0.3":
             base_url += "v0.3.0/precise-engine_0.3.0_{arch}.tar.gz"
             folder = join(xdg_folder, 'precise03')
         else:
