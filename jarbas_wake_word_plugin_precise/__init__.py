@@ -12,6 +12,7 @@
 #
 import distutils.spawn
 from ovos_plugin_manager.templates.hotwords import HotWordEngine
+from ovos_utils.log import LOG
 from os.path import join, isfile, expanduser, isdir
 from petact import install_package
 import platform
@@ -32,16 +33,19 @@ class PreciseHotwordPlugin(HotWordEngine):
         self.has_found = False
         self.stream = ReadWriteStream()
 
-        trigger_level = self.config.get('trigger_level', 3)
-        sensitivity = self.config.get('sensitivity', 0.5)
-        version = str(self.config.get("version", "0.2"))
+        self.trigger_level = self.config.get('trigger_level', 3)
+        self.sensitivity = self.config.get('sensitivity', 0.5)
+        self.version = str(self.config.get("version", "0.2"))
 
         dist_exe = distutils.spawn.find_executable("precise-engine")
         precise_exe = self.config.get("binary_path", dist_exe)
         model = self.config.get('model')
 
         if not precise_exe:
-            precise_exe = self.get_binary(version)
+            precise_exe = self.get_binary(self.version)
+
+        if model and model.startswith("http"):
+            model = self.download_model(model)
 
         if not model or not isfile(expanduser(model)):
             raise ValueError("Model not found")
@@ -50,7 +54,7 @@ class PreciseHotwordPlugin(HotWordEngine):
 
         self.runner = PreciseRunner(
             PreciseEngine(precise_exe, self.precise_model),
-            trigger_level, sensitivity,
+            self.trigger_level, self.sensitivity,
             stream=self.stream, on_activation=self.on_activation,
         )
         self.runner.start()
@@ -66,19 +70,41 @@ class PreciseHotwordPlugin(HotWordEngine):
             base_url += "v0.3.0/precise-engine_0.3.0_{arch}.tar.gz"
             folder = join(xdg_folder, 'precise03')
         else:
-            print("Supported versions are 0.2 and 0.3, "
-                  "please provide a path to the precise binary")
+            LOG.info("Supported versions are 0.2 and 0.3, "
+                     "please provide a path to the precise binary")
             raise ValueError("Unsupported Precise Version")
 
         if not isdir(folder):
-            print("Downloading binary for precise {v}".format(v=version))
-            print("This might take a while")
+            LOG.info("Downloading binary for precise {v}".format(v=version))
+            LOG.info("This might take a while")
             arch = platform.machine()
             install_package(base_url.format(arch=arch), folder)
-            print("Binary downloaded")
+            LOG.info("Binary downloaded")
 
         precise_exe = join(folder, 'precise-engine', 'precise-engine')
         return precise_exe
+
+    def download_model(self, url):
+        xdg_folder = BaseDirectory.xdg_data_home
+        if self.version == "0.2":
+            folder = join(xdg_folder, 'precise02models')
+        elif self.version == "0.3":
+            folder = join(xdg_folder, 'precise03models')
+        else:
+            LOG.info("Supported versions are 0.2 and 0.3, "
+                     "please provide a path to the precise binary")
+            raise ValueError("Unsupported Precise Version")
+
+        name = url.split("/")[-1].split(".")[0] + ".pb"
+        model_path = join(folder, name)
+        if not isfile(model_path):
+            LOG.info("Downloading model for precise {v}".format(
+                v=self.version))
+            LOG.info(url)
+            install_package(url, folder)
+            LOG.info(f"Model downloaded to {model_path}")
+
+        return model_path
 
     def on_activation(self):
         self.has_found = True

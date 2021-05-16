@@ -52,7 +52,7 @@ Advanced configuration
         "trigger_level": 3,
         "sensitivity": 0.5,
         "version": "0.3",
-        "model": "path/to/your/model",
+        "model": "path/or/url/to/your/model",
         "binary_path": "path/to/your/binary/eg/using/tflite",
         "expected_duration": 3
     }
@@ -64,7 +64,8 @@ Advanced configuration
 - `binary_path` if you want to use your own binary, eg for use with 
   [tflite branch](https://github.com/MycroftAI/mycroft-precise/pull/141)
 - `version` defaults to 0.2, only 0.2 and 0.3 supported (ignored if binary path is set)
-- `model` full path to your model file
+- `model` full path to your model file, if it's an url the model will be 
+  downloaded to a XDG directory
 - `trigger_level` Higher = more delay & less sensitive
 - `sensitivity`  Higher = more sensitive
 - `expected_duration` defaults to 3 seconds (max value), this is the time 
