@@ -11,7 +11,7 @@
 # limitations under the License.
 #
 import distutils.spawn
-from ovos_utils.plugins.hotwords import HotWordEngine
+from ovos_plugin_manager.templates.hotwords import HotWordEngine
 from os.path import join, isfile, expanduser, isdir
 from petact import install_package
 import platform
