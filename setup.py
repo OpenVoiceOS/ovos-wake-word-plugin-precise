@@ -2,18 +2,18 @@
 from setuptools import setup
 
 
-PLUGIN_ENTRY_POINT = 'jarbas_precise_ww_plug=jarbas_wake_word_plugin_precise:PreciseHotwordPlugin'
+PLUGIN_ENTRY_POINT = 'ovos_ww_precise=ovos_wake_word_plugin_precise:PreciseHotwordPlugin'
 setup(
-    name='jarbas-wake-word-plugin-precise',
-    version='0.2.2',
-    description='A wake word plugin for mycroft',
-    url='https://github.com/JarbasLingua/jarbas-wake-word-plugin-precise',
+    name='ovos-wake-word-plugin-precise',
+    version='0.2.3',
+    description='A wake word plugin for OpenVoiceOS',
+    url='https://github.com/OpenVoiceOS/ovos-wake-word-plugin-precise',
     author='JarbasAi',
     author_email='jarbasai@mailfence.com',
     license='Apache-2.0',
-    packages=['jarbas_wake_word_plugin_precise'],
+    packages=['ovos_wake_word_plugin_precise'],
     install_requires=["precise-runner>=0.2.1",
-                      "ovos-plugin-manager>=0.0.1a2",
+                      "ovos-plugin-manager>=0.0.1a3",
                       "petact>=0.1.2",
                       "pyxdg>=0.26"],
     zip_safe=True,
