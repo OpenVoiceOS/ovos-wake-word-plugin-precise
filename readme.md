@@ -22,7 +22,7 @@ more info in the [docs](https://mycroft-ai.gitbook.io/docs/mycroft-technologies/
 
 ## Install
 
-`pip install ovos-wake-word-plugin-precise`
+`pip install ovos-ww-plugin-precise`
 
 Configure your wake word in mycroft.conf
 
@@ -32,7 +32,7 @@ Configure your wake word in mycroft.conf
  },
  "hotwords": {
     "android": {
-        "module": "ovos_ww_precise",
+        "module": "ovos-ww-plugin-precise",
         "version": "0.3",
         "model": "path/to/your/model"
     }
@@ -48,7 +48,7 @@ Advanced configuration
  },
  "hotwords": {
     "android": {
-        "module": "ovos_ww_precise",
+        "module": "ovos-ww-plugin-precise",
         "trigger_level": 3,
         "sensitivity": 0.5,
         "version": "0.3",

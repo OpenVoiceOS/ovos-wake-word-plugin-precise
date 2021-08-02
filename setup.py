@@ -2,18 +2,18 @@
 from setuptools import setup
 
 
-PLUGIN_ENTRY_POINT = 'ovos_ww_precise=ovos_wake_word_plugin_precise:PreciseHotwordPlugin'
+PLUGIN_ENTRY_POINT = 'ovos-ww-plugin-precise=ovos_ww_plugin_precise:PreciseHotwordPlugin'
 setup(
-    name='ovos-wake-word-plugin-precise',
-    version='0.2.3',
+    name='ovos-ww-plugin-precise',
+    version='0.1.0',
     description='A wake word plugin for OpenVoiceOS',
-    url='https://github.com/OpenVoiceOS/ovos-wake-word-plugin-precise',
+    url='https://github.com/OpenVoiceOS/ovos-ww-plugin-precise',
     author='JarbasAi',
     author_email='jarbasai@mailfence.com',
     license='Apache-2.0',
-    packages=['ovos_wake_word_plugin_precise'],
+    packages=['ovos_ww_plugin_precise'],
     install_requires=["precise-runner>=0.2.1",
-                      "ovos-plugin-manager>=0.0.1a3",
+                      "ovos-plugin-manager>=0.0.1a7",
                       "petact>=0.1.2",
                       "pyxdg>=0.26"],
     zip_safe=True,
@@ -34,6 +34,6 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
     ],
-    keywords='mycroft plugin wake word',
+    keywords='mycroft ovos plugin wake word',
     entry_points={'mycroft.plugin.wake_word': PLUGIN_ENTRY_POINT}
 )
