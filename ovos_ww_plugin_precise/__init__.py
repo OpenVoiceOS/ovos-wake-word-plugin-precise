@@ -16,7 +16,7 @@ from ovos_utils.log import LOG
 from os.path import join, isfile, expanduser, isdir
 from petact import install_package
 import platform
-from xdg import BaseDirectory as XDG
+from ovos_utils.xdg_utils import xdg_data_home
 from precise_runner import PreciseRunner, PreciseEngine, ReadWriteStream
 
 
@@ -64,10 +64,10 @@ class PreciseHotwordPlugin(HotWordEngine):
         base_url = "https://github.com/MycroftAI/mycroft-precise/releases/download/"
         if version == "0.2":
             base_url += "v0.2.0/precise-engine_0.2.0_{arch}.tar.gz"
-            folder = join(XDG.xdg_data_home, 'precise02')
+            folder = join(xdg_data_home(), 'precise02')
         elif version == "0.3":
             base_url += "v0.3.0/precise-engine_0.3.0_{arch}.tar.gz"
-            folder = join(XDG.xdg_data_home, 'precise03')
+            folder = join(xdg_data_home(), 'precise03')
         else:
             LOG.info("Supported versions are 0.2 and 0.3, "
                      "please provide a path to the precise binary")
@@ -85,9 +85,9 @@ class PreciseHotwordPlugin(HotWordEngine):
 
     def download_model(self, url):
         if self.version == "0.2":
-            folder = join(XDG.xdg_data_home, 'precise02models')
+            folder = join(xdg_data_home(), 'precise02models')
         elif self.version == "0.3":
-            folder = join(XDG.xdg_data_home, 'precise03models')
+            folder = join(xdg_data_home(), 'precise03models')
         else:
             LOG.info("Supported versions are 0.2 and 0.3, "
                      "please provide a path to the precise binary")
