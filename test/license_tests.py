@@ -10,10 +10,12 @@ license_overrides = {
     'yt-dlp': "Unlicense",
     'pyxdg': 'GPL-2.0',
     'ptyprocess': 'ISC license',
-    'psutil': 'BSD3'
+    'psutil': 'BSD3',
+    "precise-runner": "Apache-2.0",
+    "petact": "MIT"
 }
 # explicitly allow these packages that would fail otherwise
-whitelist = []
+whitelist = ["petact", "precise-runner"]
 
 # validation flags
 allow_nonfree = False
