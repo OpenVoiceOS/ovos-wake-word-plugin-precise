@@ -9,10 +9,12 @@ license_overrides = {
     "kthread": "MIT",
     'yt-dlp': "Unlicense",
     'pyxdg': 'GPL-2.0',
-    'ptyprocess': 'ISC license',
-    'psutil': 'BSD3',
+    'ptyprocess': 'ISC',
+    'PyAudio': 'MIT',
+    'petact': 'MIT',
+    "sonopy": "Apache-2.0",
     "precise-runner": "Apache-2.0",
-    "petact": "MIT"
+    'psutil': 'BSD3'
 }
 # explicitly allow these packages that would fail otherwise
 whitelist = ["petact", "precise-runner"]
