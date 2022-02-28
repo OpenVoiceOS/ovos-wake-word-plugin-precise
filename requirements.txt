@@ -1,4 +1,0 @@
-precise-runner>=0.2.1
-petact>=0.1.2
-ovos-plugin-manager>=0.0.1a7
-ovos-utils~=0.0.14a7
