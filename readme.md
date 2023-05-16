@@ -1,3 +1,11 @@
+# DEPRECATED - Precise Plugin
+
+With mycroft's demise users are encouraged to move to https://github.com/OpenVoiceOS/ovos-ww-plugin-precise-lite and https://github.com/OpenVoiceOS/precise-lite-trainer
+
+This plugin will no longer be maintainer by OpenVoiceOS
+________________
+
+
 ## Description
 This adds a plugin for precise, this is the official mycroft wake word 
 engine and is supported out of the box by core, however i have some issues 
